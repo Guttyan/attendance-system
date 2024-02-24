@@ -1,0 +1,58 @@
+.users-header{
+    font-size:20px;
+    font-weight:bold;
+    width: 300px;
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.users__list{
+    position:relative;
+    top:100px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    justify-content:space-between;
+    width:1000px;
+}
+
+.users-column{
+    width:45%;
+}
+
+.users-table{
+    width:100%;
+}
+
+.users-table__row {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.users-table__detail-button{
+    width:40%;
+}
+
+.users-table__row td {
+    padding: 15px 0;
+    padding-left: 50px;
+}
+
+.users-table__name{
+    text-align:left;
+}
+
+.users-detail__form button{
+    border:1px solid black;
+    border-radius: 2px;
+    height:25px;
+}
+
+.pagination{
+    position:absolute;
+    top:85%;
+    left:50%;
+    transform:translateX(-50%);
+}

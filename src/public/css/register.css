@@ -1,0 +1,48 @@
+.register-header{
+    padding-top:90px;
+    padding-bottom:30px;
+    font-size:25px;
+}
+
+.register-form{
+    width:400px;
+    margin:0 auto;
+}
+
+.register-form__column{
+    width:100%;
+    background:#e7e8e9;
+    line-height:40px;
+    margin:15px 0;
+    border-radius: 5px;
+    border:none;
+    border:2px solid #918F8F;
+}
+
+.register-form__column::placeholder{
+    padding-left:10px;
+}
+
+.register-form__button{
+    width:400px;
+    border:none;
+    height:40px;
+    color:white;
+    background:#1A4AE7;
+    margin-top:15px;
+    border-radius:5px;
+}
+
+.login-recommend__text{
+    color:#918F8F;
+    padding-top:30px;
+}
+
+.login-recommend__anchor{
+    margin-top:5px;
+}
+
+.form__error{
+    text-align:left;
+    color:#DC143C;
+}
