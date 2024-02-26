@@ -41,7 +41,11 @@ class AttendanceProcess extends Command
     public function handle()
     {
         // 仕事中の人を取得
-        $during_users = Work::whereDate('date',now()->format('Y-m-d'))->whereNull('end_time')->with('breaking')->get();
+        $during_users = Work::whereDate('date',now()->format('Y-m-d'))->whereNull('end_time')
+        ->orWhere(function($query){
+            $query->where('date', now()->subDay()->format('Y-m-d'));
+        })
+        ->with('breaking')->get();
 
         try{
 
@@ -49,7 +53,7 @@ class AttendanceProcess extends Command
                 foreach($during_users as $during_user){
                     $user_id = $during_user->user_id;
                     // 本日の勤務終了処理
-                    $during_user->update(['end_time' => now()->format("H:i:s")]);
+                    $during_user->update(['end_time' => '23:59:59']);
 
                     // 翌日の勤務開始処理
                     $new_work = Work::create([
@@ -65,7 +69,7 @@ class AttendanceProcess extends Command
                         // 休憩中か判断
                         if($breaking_user){
                             // 本日の休憩終了処理
-                            $breaking_user->update(['end_time' => now()->format("H:i:s")]);
+                            $breaking_user->update(['end_time' => '23:59:59']);
                             // 翌日の休憩開始処理
                             Breaking::create([
                                 'user_id' => $user_id,
