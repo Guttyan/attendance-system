@@ -42,9 +42,6 @@ class AttendanceProcess extends Command
     {
         // 仕事中の人を取得
         $during_users = Work::whereDate('date',now()->format('Y-m-d'))->whereNull('end_time')
-        ->orWhere(function($query){
-            $query->where('date', now()->subDay()->format('Y-m-d'));
-        })
         ->with('breaking')->get();
 
         try{
@@ -64,7 +61,7 @@ class AttendanceProcess extends Command
 
                     // 休憩のリレーションがあるか判断
                     if($during_user->breaking){
-                        $breaking_user = Breaking::whereNull('end_time')->first();
+                        $breaking_user = Breaking::where('user_id', $user_id)->whereNull('end_time')->first();
 
                         // 休憩中か判断
                         if($breaking_user){
