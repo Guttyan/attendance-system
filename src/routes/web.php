@@ -15,15 +15,15 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-Route::get('/email/verify', function(){
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
-Route::get('/email/verify/{id}/{hash}', function(EmailVerificationRequest $request){
-    $request->fulfill();
-    return redirect('/');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+// Route::get('/email/verify', function(){
+//     return view('auth.verify-email');
+// })->middleware('auth')->name('verification.notice');
+// Route::get('/email/verify/{id}/{hash}', function(EmailVerificationRequest $request){
+//     $request->fulfill();
+//     return redirect('/');
+// })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::middleware(['auth', 'verified'])->group(function(){
+// Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/', [AttendanceController::class, 'index']);
     Route::get('/attendance', [AttendanceController::class, 'attendance']);
     Route::get('/attendance/next_day', [AttendanceController::class, 'next_day']);
@@ -34,4 +34,4 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::post('/breaking_finish', [AttendanceController::class, 'breaking_finish']);
     Route::get('/users_list', [AttendanceController::class, 'users_list']);
     Route::get('/users_list/user_record', [AttendanceController::class, 'user_record']);
-});
+// });
